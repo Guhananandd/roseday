@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Happy Rose Day 🌹</title>
+
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <style>
+    .rose {
+      position: absolute;
+      font-size: 22px;
+      animation: floatUp 7s linear infinite;
+      opacity: 0.9;
+      white-space: nowrap;
+    }
+
+    @keyframes floatUp {
+      0% {
+        transform: translateY(100vh) scale(0.6);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-10vh) scale(1.2);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+
+<body class="h-screen flex items-center justify-center bg-gradient-to-br from-rose-400 to-pink-200 overflow-hidden">
+
+  <!-- Floating Roses -->
+  <div id="roses"></div>
+
+  <!-- Card -->
+  <div class="relative bg-white p-14 rounded-3xl shadow-2xl w-[440px] text-center z-10">
+
+    <h1 class="text-4xl font-bold text-rose-600 mb-4">
+      Happy Rose Day 🌹
+    </h1>
+
+    <p class="text-xl mb-10 font-semibold text-gray-700">
+      A rose for the one who makes my world beautiful
+    </p>
+
+    <!-- Button -->
+    <button
+      onclick="showMessage()"
+      class="bg-rose-500 hover:bg-rose-600 text-white px-10 py-4 rounded-full text-xl transition shadow-lg">
+      Take My Rose 🌹
+    </button>
+
+    <!-- Message -->
+    <div
+      id="roseMessage"
+      class="hidden text-2xl text-rose-600 mt-10 font-semibold leading-relaxed">
+      This rose is not just a flower🌹<br>
+      It’s my love, care, and promise💕<br>
+      Happy Rose Day,my love💖<br>
+      <span class="text-lg">– Guhan 💗 Mahathi</span>
+    </div>
+
+  </div>
+
+  <script>
+    function showMessage() {
+      document.getElementById("roseMessage").classList.remove("hidden");
+    }
+
+    // Floating roses animation
+    function createRose() {
+      const rose = document.createElement("div");
+      rose.classList.add("rose");
+
+      const roses = ["🌹", "❤️", "💖", "🌸"];
+      rose.innerHTML = roses[Math.floor(Math.random() * roses.length)];
+
+      rose.style.left = Math.random() * 100 + "vw";
+      rose.style.animationDuration = (Math.random() * 3 + 4) + "s";
+
+      document.getElementById("roses").appendChild(rose);
+
+      setTimeout(() => rose.remove(), 7000);
+    }
+
+    setInterval(createRose, 350);
+  </script>
+
+</body>
+</html>
